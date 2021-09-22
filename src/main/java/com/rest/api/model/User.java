@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -19,9 +21,11 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
+    @Size(min = 2, message = "Name Should Have At Least 2 Characters")
     @Column(name = "name")
     private String name;
 
+    @Past
     @Column(name = "birthdate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Date birthdate = new Date();

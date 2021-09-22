@@ -27,4 +27,11 @@ public class UserService {
 //        user.setBirthdate(new Date());
         return userRepo.save(user);
     }
+    public void deleteuser(int id){
+        if(id <=0 ) {
+            throw new UserNotFoundException("User Not Found ID " + id);
+        }
+         userRepo.deleteById(id);
+
+    }
 }
