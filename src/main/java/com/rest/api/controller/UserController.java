@@ -35,9 +35,9 @@ public class UserController {
     //HATEOAS
         EntityModel<User> resource = EntityModel.of(user);
         WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).users());
+
         resource.add(linkTo.withRel("users"));
        return resource;
-
 //        User user =  userService.findUser(id);
 //        if(user == null)
 //            throw new UserNotFoundException("id-> "+id);
