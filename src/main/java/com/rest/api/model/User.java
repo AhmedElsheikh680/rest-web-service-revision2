@@ -1,10 +1,9 @@
 package com.rest.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Past;
@@ -14,6 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name = "user")
 @Data
+@ApiModel(description = "All Details About User")
 public class User {
 
     @Id
@@ -23,11 +23,14 @@ public class User {
 
     @Size(min = 2, message = "Name Should Have At Least 2 Characters")
     @Column(name = "name")
+    @ApiModelProperty(notes = "Name Should Have At Least 2 Characters")
     private String name;
 
     @Past
     @Column(name = "birthdate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @Past
+    @ApiModelProperty(notes = "Birthdate Should Be In The Past")
     private Date birthdate = new Date();
 
 //    public User() {
